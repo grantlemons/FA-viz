@@ -42,13 +42,3 @@ fn read_file(p: &Path) -> String {
 
     res
 }
-
-fn write_file(p: &Path, contents: String) {
-    use std::fs::File;
-    use std::io::Write;
-
-    let mut file = File::create(p).expect("Unable to create file!");
-
-    file.write_all(contents.as_bytes())
-        .expect("Unable to write to file!");
-}
