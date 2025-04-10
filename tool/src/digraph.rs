@@ -44,20 +44,22 @@ impl From<&TransitionTable> for Digraph {
 
         for state in &value.rows {
             for (i, t) in state.transitions.iter().enumerate() {
-                let transition: String = char::from_digit(i as u32 + 'a'.to_digit(10).unwrap(), 10)
-                    .unwrap()
-                    .to_string();
-                let destination: Node = t.unwrap();
-                graph
-                    .edges
-                    .entry((state.id, BTreeSet::<Node>::from([destination])))
-                    .and_modify(|acc| {
-                        acc.push('|');
-                        acc.push_str(&transition.to_string());
-                    })
-                    .or_insert(transition.to_string());
-                if state.accepting {
-                    graph.accepting_nodes.insert(state.id);
+                if let Some(t) = t {
+                    let transition: String = char::from_u32(i as u32 + 'a' as u32)
+                        .expect("Unable to convert from decimal to char.")
+                        .to_string();
+                    let destination: Node = *t;
+                    graph
+                        .edges
+                        .entry((state.id, BTreeSet::<Node>::from([destination])))
+                        .and_modify(|acc| {
+                            acc.push('|');
+                            acc.push_str(&transition.to_string());
+                        })
+                        .or_insert(transition.to_string());
+                    if state.accepting {
+                        graph.accepting_nodes.insert(state.id);
+                    }
                 }
             }
         }
