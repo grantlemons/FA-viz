@@ -1,0 +1,12 @@
+[package]
+name = "tool"
+version = "0.1.0"
+edition = "2024"
+
+[dependencies]
+alphabet-encoding = { git = "https://github.com/grantlemons/alphabet-encoding", version = "0.1.1" }
+anyhow = "1.0.97"
+clap = { version = "4.5.35", features = ["derive"] }
+itertools = "0.14.0"
+nfa = { path = "../nfa" }
+transition-tables = { git = "https://github.com/grantlemons/transition-tables", version = "0.2.1" }

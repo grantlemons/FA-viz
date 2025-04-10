@@ -1,0 +1,10 @@
+[package]
+name = "nfa"
+version = "0.1.0"
+edition = "2021"
+
+[dependencies]
+optimize-dfa = { path = "../optimize-dfa" }
+alphabet-encoding = { git = "https://github.com/grantlemons/alphabet-encoding", version = "0.1.1" }
+dfs = { git = "https://github.com/grantlemons/dfs", version = "0.1.0" }
+transition-tables = { git = "https://github.com/grantlemons/transition-tables", version = "0.2.1" }

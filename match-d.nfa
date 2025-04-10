@@ -1,0 +1,23 @@
+5 # a b c d e f g
++ 0 0 c g f # e b
++ 0 100 f
++ 0 101 e # d g f a
++ 0 102 b e d c g a
++ 0 103 b # d a e f
+- 100 0 g 
+- 100 100 f 
+- 100 101 # b f c a d
+- 100 102 c f g d b e
+- 100 103 f d c g a e
+- 101 100 f 
+- 101 101 c g b e d a
+- 101 102 d c a # b g
+- 101 103 c d # b a e
+- 102 100 f
+- 102 101 d b c a # g
+- 102 102 # d c b a f
+- 102 103 f e d c # b
+- 103 100 f 
+- 103 101 b a f c # g
+- 103 102 e a b d c f
+- 103 103 g # e f a b

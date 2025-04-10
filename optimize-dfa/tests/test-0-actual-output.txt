@@ -1,0 +1,16 @@
+- 0 17 E E E E E E E E
+- 1 E E E E E E E E 18
+- 2 E E E E E E E 1 E
+- 3 E E E E E 3 2 E E
+- 4 E E E E E E E E 20
+- 5 E E E E E E E 4 E
+- 6 E E E E E E 5 E 21
+- 8 E E E E 8 3 E 6 E
+- 11 E E E E E 11 5 E E
+- 13 E E E E 13 11 E E E
+- 15 E E E 8 13 11 E E E
+- 16 E E 15 E E E E E E
+- 17 E 16 E E E E E E E
++ 18 E E E E E E E E 18
++ 20 E E E E E E E E E
++ 21 E E E E E E E E 21

@@ -1,0 +1,7 @@
+[workspace]
+members = [
+    "nfa",
+    "optimize-dfa",
+    "tool",
+]
+resolver = "2"
