@@ -1,4 +1,4 @@
-use alphabet_encoding::decode;
+use alphabet_encoding::{decode, encode};
 use std::error::Error;
 use std::fmt::Display;
 use std::{
@@ -23,7 +23,9 @@ pub enum Transition {
 impl Display for Transition {
     fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
         let s = match self {
-            Transition::Char(c) => c.to_string(),
+            Transition::Char(c) if *c == ' ' => "SP".to_string(),
+            Transition::Char(c) if c.is_ascii_graphic() => c.to_string(),
+            Transition::Char(c) => encode(c.to_string()),
             Transition::Lambda => "&lambda;".to_string(),
         };
 
@@ -117,11 +119,12 @@ impl FromStr for NFA {
                     .split_once(' ')
                     .unwrap_or((to_and_chars, lambda_char));
 
-                let transitions: Result<Vec<_>, ParseError> = decode(chars.to_string())
-                    .map_err(|_| ParseError::InvalidEncoding)?
+                let transitions: Result<Vec<_>, ParseError> = chars
+                    .to_string()
                     .split_whitespace()
+                    .map(|c| decode(c.to_string()).map_err(|_| ParseError::InvalidEncoding))
                     .map(|c| {
-                        Ok(match c {
+                        Ok(match c? {
                             a if a == lambda_char => Transition::Lambda,
                             a => Transition::Char(
                                 a.chars().next().ok_or(ParseError::EmptyTransition)?,
