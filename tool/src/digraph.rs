@@ -57,10 +57,10 @@ impl From<&TransitionTable> for Digraph {
                             acc.push_str(&transition.to_string());
                         })
                         .or_insert(transition.to_string());
-                    if state.accepting {
-                        graph.accepting_nodes.insert(state.id);
-                    }
                 }
+            }
+            if state.accepting {
+                graph.accepting_nodes.insert(state.id);
             }
         }
 
