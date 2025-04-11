@@ -80,7 +80,7 @@ impl Display for Digraph {
         let edge_defs: String = Itertools::intersperse(
             self.edges.iter().map(|((src, destinations), label)| {
                 format!(
-                    "{} -> {{ {} }} [label=\"{}\"]",
+                    "{} -> {{ {} }} [label=<{}>]",
                     src.to_string(),
                     destinations
                         .iter()

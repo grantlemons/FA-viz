@@ -3,6 +3,18 @@
 version = 4
 
 [[package]]
+name = "FA-viz"
+version = "0.1.0"
+dependencies = [
+ "alphabet-encoding",
+ "anyhow",
+ "clap",
+ "itertools",
+ "nfa",
+ "transition-tables",
+]
+
+[[package]]
 name = "alphabet-encoding"
 version = "0.1.1"
 source = "git+https://github.com/grantlemons/alphabet-encoding#492430dfb1c1249b87556b2a5b628aa3e9be7377"
@@ -221,18 +233,6 @@ dependencies = [
  "proc-macro2",
  "quote",
  "syn",
-]
-
-[[package]]
-name = "tool"
-version = "0.1.0"
-dependencies = [
- "alphabet-encoding",
- "anyhow",
- "clap",
- "itertools",
- "nfa",
- "transition-tables",
 ]
 
 [[package]]
