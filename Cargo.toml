@@ -1,7 +1,19 @@
-[workspace]
-members = [
-    "nfa",
-    "optimize-dfa",
-    "tool",
-]
-resolver = "2"
+[package]
+name = "fa_viz"
+version = "0.1.0"
+edition = "2024"
+
+[lib]
+name = "fa_viz"
+path = "lib/lib.rs"
+
+[[bin]]
+name = "FA-viz"
+path = "src/main.rs"
+
+[dependencies]
+alphabet-encoding = { git = "https://github.com/grantlemons/alphabet-encoding", version = "0.1.1" }
+anyhow = "1.0.97"
+clap = { version = "4.5.35", features = ["derive"] }
+itertools = "0.14.0"
+transition-tables = { git = "https://github.com/grantlemons/transition-tables", version = "0.2.1" }

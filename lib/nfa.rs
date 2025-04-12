@@ -6,11 +6,6 @@ use std::{
     str::FromStr,
 };
 
-mod dfa;
-mod to_dfa;
-
-pub use dfa::*;
-
 type State = usize;
 type Transitions = BTreeMap<Transition, BTreeSet<State>>;
 
@@ -164,99 +159,5 @@ impl FromStr for NFA {
             states,
             alphabet: alphabet?,
         })
-    }
-}
-
-#[cfg(test)]
-mod tests {
-    use crate::DFA;
-
-    use super::NFA;
-
-    #[test]
-    fn parse_example() {
-        let src = "13 # * / P
-- 0 1 /
-- 1 2 *
-- 2 3 #
-- 2 5 #
-- 2 7 #
-- 2 10 #
-- 3 4 /
-- 4 10 #
-- 5 6 P
-- 6 10 #
-- 7 8 *
-- 8 8 *
-- 8 9 P
-- 9 10 #
-- 10 2 #
-- 10 11 *
-- 11 11 *
-- 11 12 /
-+ 12 12";
-
-        let nfa: NFA = src.parse().unwrap();
-
-        assert_eq!(nfa.states.len(), 13);
-
-        let start_to_states: Vec<_> = nfa
-            .states
-            .get(&0)
-            .expect("State not in NFA")
-            .1
-            .values()
-            .cloned()
-            .flatten()
-            .collect();
-        assert_eq!(&start_to_states, &[1]);
-
-        let twelve_to_states: Vec<_> = nfa
-            .states
-            .get(&12)
-            .expect("State not in NFA")
-            .1
-            .values()
-            .cloned()
-            .flatten()
-            .collect();
-        assert_eq!(&twelve_to_states, &[12]);
-    }
-
-    #[test]
-    fn match_d() {
-        let src = "5 # a b c d e f g
-+ 0 0 c g f # e b
-+ 0 100 f
-+ 0 101 e # d g f a
-+ 0 102 b e d c g a
-+ 0 103 b # d a e f
-- 100 0 g 
-- 100 100 f 
-- 100 101 # b f c a d
-- 100 102 c f g d b e
-- 100 103 f d c g a e
-- 101 100 f 
-- 101 101 c g b e d a
-- 101 102 d c a # b g
-- 101 103 c d # b a e
-- 102 100 f
-- 102 101 d b c a # g
-- 102 102 # d c b a f
-- 102 103 f e d c # b
-- 103 100 f 
-- 103 101 b a f c # g
-- 103 102 e a b d c f
-- 103 103 g # e f a b
-";
-        let expected_tt = "+ 0 1 0 0 1 0 0 0
-- 1 1 1 1 1 1 2 1
-- 2 1 1 1 1 1 2 0
-";
-
-        let nfa: NFA = src.parse().unwrap();
-        let dfa: DFA = DFA::from(nfa);
-
-        assert_eq!(dfa.ttable().serialize().unwrap(), expected_tt);
     }
 }

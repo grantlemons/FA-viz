@@ -1,10 +1,12 @@
 use itertools::Itertools;
-use nfa::NFA;
+
 use std::{
     collections::{BTreeMap, BTreeSet},
     fmt::Display,
 };
 use transition_tables::TransitionTable;
+
+use crate::NFA;
 
 type Node = usize;
 #[derive(Default)]

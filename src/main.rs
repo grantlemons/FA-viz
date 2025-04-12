@@ -4,11 +4,9 @@ use std::{path::Path, str::FromStr};
 use anyhow::{Context, Result};
 use clap::Parser;
 use cli_args::CliArgs;
-use nfa::NFA;
 use transition_tables::TransitionTable;
 
-mod digraph;
-use digraph::Digraph;
+use fa_viz::*;
 
 fn main() -> Result<()> {
     let args = CliArgs::parse();

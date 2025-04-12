@@ -3,18 +3,6 @@
 version = 4
 
 [[package]]
-name = "FA-viz"
-version = "0.1.0"
-dependencies = [
- "alphabet-encoding",
- "anyhow",
- "clap",
- "itertools",
- "nfa",
- "transition-tables",
-]
-
-[[package]]
 name = "alphabet-encoding"
 version = "0.1.1"
 source = "git+https://github.com/grantlemons/alphabet-encoding#492430dfb1c1249b87556b2a5b628aa3e9be7377"
@@ -81,9 +69,9 @@ checksum = "dcfed56ad506cb2c684a14971b8861fdc3baaaae314b9e5f9bb532cbe3ba7a4f"
 
 [[package]]
 name = "clap"
-version = "4.5.35"
+version = "4.5.36"
 source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "d8aa86934b44c19c50f87cc2790e19f54f7a67aedb64101c2e1a2e5ecfb73944"
+checksum = "2df961d8c8a0d08aa9945718ccf584145eee3f3aa06cddbeac12933781102e04"
 dependencies = [
  "clap_builder",
  "clap_derive",
@@ -91,9 +79,9 @@ dependencies = [
 
 [[package]]
 name = "clap_builder"
-version = "4.5.35"
+version = "4.5.36"
 source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "2414dbb2dd0695280da6ea9261e327479e9d37b0630f6b53ba2a11c60c679fd9"
+checksum = "132dbda40fb6753878316a489d5a1242a8ef2f0d9e47ba01c951ea8aa7d013a5"
 dependencies = [
  "anstream",
  "anstyle",
@@ -126,15 +114,21 @@ source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "5b63caa9aa9397e2d9480a9b13673856c78d8ac123288526c37d7839f2a86990"
 
 [[package]]
-name = "dfs"
-version = "0.1.0"
-source = "git+https://github.com/grantlemons/dfs#35a2ab045f9893044c9db9ba69e553a4ddc97169"
-
-[[package]]
 name = "either"
 version = "1.15.0"
 source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "48c757948c5ede0e46177b7add2e67155f70e33c07fea8284df6576da70b3719"
+
+[[package]]
+name = "fa_viz"
+version = "0.1.0"
+dependencies = [
+ "alphabet-encoding",
+ "anyhow",
+ "clap",
+ "itertools",
+ "transition-tables",
+]
 
 [[package]]
 name = "heck"
@@ -158,27 +152,10 @@ dependencies = [
 ]
 
 [[package]]
-name = "nfa"
-version = "0.1.0"
-dependencies = [
- "alphabet-encoding",
- "dfs",
- "optimize-dfa",
- "transition-tables",
-]
-
-[[package]]
 name = "once_cell"
 version = "1.21.3"
 source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "42f5e15c9953c5e4ccceeb2e7382a716482c34515315f7b03532b8b4e8393d2d"
-
-[[package]]
-name = "optimize-dfa"
-version = "0.0.0"
-dependencies = [
- "transition-tables",
-]
 
 [[package]]
 name = "proc-macro2"
